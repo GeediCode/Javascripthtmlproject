@@ -1,0 +1,24 @@
+<html>
+  <head> </head>
+  <body onload="init()">
+    <p>Test Value: <span id="testvalue"></span></p>
+  </body>
+
+  <script>
+    function init() {
+      var dataRaw = window.localStorage.getItem("testValue");
+      if (dataRaw) {
+        data = JSON.parse(dataRaw);
+      } else {
+        data = {};
+        data.text = "Hello World";
+        data.intValue = 0;
+      }
+      data.text += "!";
+      ++data.intValue;
+      window.localStorage.setItem("testValue", JSON.stringify(data));
+      document.getElementById("testvalue").innerHTML =
+        data.text + " (" + data.intValue + ")";
+    }
+  </script>
+</html>
